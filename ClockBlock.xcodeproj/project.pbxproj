@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6898DF13255CA19600000F3C /* GlobalColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6898DF12255CA19600000F3C /* GlobalColor.swift */; };
 		68B860C82554185300110FEB /* BaseCoreDataApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B860C72554185300110FEB /* BaseCoreDataApp.swift */; };
 		68B860CA2554185300110FEB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B860C92554185300110FEB /* ContentView.swift */; };
 		68B860CC2554185400110FEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68B860CB2554185400110FEB /* Assets.xcassets */; };
@@ -15,6 +16,11 @@
 		68B860D42554185400110FEB /* BaseCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 68B860D22554185400110FEB /* BaseCoreData.xcdatamodeld */; };
 		68B860DF2554185400110FEB /* BaseCoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B860DE2554185400110FEB /* BaseCoreDataTests.swift */; };
 		68B860EA2554185400110FEB /* BaseCoreDataUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B860E92554185400110FEB /* BaseCoreDataUITests.swift */; };
+		68B8613A2556A63200110FEB /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B861392556A63200110FEB /* ItemView.swift */; };
+		68B8613F25574F6600110FEB /* DateSelectionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B8613E25574F6600110FEB /* DateSelectionSheet.swift */; };
+		68B861B8255941A500110FEB /* DateStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B861B7255941A500110FEB /* DateStorage.swift */; };
+		68B861F7255A9C1300110FEB /* SavedTasksSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B861F6255A9C1300110FEB /* SavedTasksSheet.swift */; };
+		68B86201255A9F7800110FEB /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B86200255A9F7800110FEB /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		68B860C42554185300110FEB /* BaseCoreData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseCoreData.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6898DF12255CA19600000F3C /* GlobalColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalColor.swift; sourceTree = "<group>"; };
+		68B860C42554185300110FEB /* ClockBlock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClockBlock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68B860C72554185300110FEB /* BaseCoreDataApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoreDataApp.swift; sourceTree = "<group>"; };
 		68B860C92554185300110FEB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		68B860CB2554185400110FEB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -43,12 +50,17 @@
 		68B860D02554185400110FEB /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		68B860D32554185400110FEB /* BaseCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BaseCoreData.xcdatamodel; sourceTree = "<group>"; };
 		68B860D52554185400110FEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		68B860DA2554185400110FEB /* BaseCoreDataTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BaseCoreDataTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		68B860DA2554185400110FEB /* ClockBlockTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClockBlockTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		68B860DE2554185400110FEB /* BaseCoreDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoreDataTests.swift; sourceTree = "<group>"; };
 		68B860E02554185400110FEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		68B860E52554185400110FEB /* BaseCoreDataUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BaseCoreDataUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		68B860E52554185400110FEB /* ClockBlockUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClockBlockUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		68B860E92554185400110FEB /* BaseCoreDataUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoreDataUITests.swift; sourceTree = "<group>"; };
 		68B860EB2554185400110FEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		68B861392556A63200110FEB /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
+		68B8613E25574F6600110FEB /* DateSelectionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectionSheet.swift; sourceTree = "<group>"; };
+		68B861B7255941A500110FEB /* DateStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateStorage.swift; sourceTree = "<group>"; };
+		68B861F6255A9C1300110FEB /* SavedTasksSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedTasksSheet.swift; sourceTree = "<group>"; };
+		68B86200255A9F7800110FEB /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,9 +101,9 @@
 		68B860C52554185300110FEB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				68B860C42554185300110FEB /* BaseCoreData.app */,
-				68B860DA2554185400110FEB /* BaseCoreDataTests.xctest */,
-				68B860E52554185400110FEB /* BaseCoreDataUITests.xctest */,
+				68B860C42554185300110FEB /* ClockBlock.app */,
+				68B860DA2554185400110FEB /* ClockBlockTests.xctest */,
+				68B860E52554185400110FEB /* ClockBlockUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -101,6 +113,12 @@
 			children = (
 				68B860C72554185300110FEB /* BaseCoreDataApp.swift */,
 				68B860C92554185300110FEB /* ContentView.swift */,
+				68B86200255A9F7800110FEB /* SettingsView.swift */,
+				68B861F6255A9C1300110FEB /* SavedTasksSheet.swift */,
+				68B861B7255941A500110FEB /* DateStorage.swift */,
+				68B8613E25574F6600110FEB /* DateSelectionSheet.swift */,
+				6898DF12255CA19600000F3C /* GlobalColor.swift */,
+				68B861392556A63200110FEB /* ItemView.swift */,
 				68B860CB2554185400110FEB /* Assets.xcassets */,
 				68B860D02554185400110FEB /* Persistence.swift */,
 				68B860D52554185400110FEB /* Info.plist */,
@@ -139,9 +157,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		68B860C32554185300110FEB /* BaseCoreData */ = {
+		68B860C32554185300110FEB /* ClockBlock */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 68B860EE2554185400110FEB /* Build configuration list for PBXNativeTarget "BaseCoreData" */;
+			buildConfigurationList = 68B860EE2554185400110FEB /* Build configuration list for PBXNativeTarget "ClockBlock" */;
 			buildPhases = (
 				68B860C02554185300110FEB /* Sources */,
 				68B860C12554185300110FEB /* Frameworks */,
@@ -151,14 +169,14 @@
 			);
 			dependencies = (
 			);
-			name = BaseCoreData;
+			name = ClockBlock;
 			productName = BaseCoreData;
-			productReference = 68B860C42554185300110FEB /* BaseCoreData.app */;
+			productReference = 68B860C42554185300110FEB /* ClockBlock.app */;
 			productType = "com.apple.product-type.application";
 		};
-		68B860D92554185400110FEB /* BaseCoreDataTests */ = {
+		68B860D92554185400110FEB /* ClockBlockTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 68B860F12554185400110FEB /* Build configuration list for PBXNativeTarget "BaseCoreDataTests" */;
+			buildConfigurationList = 68B860F12554185400110FEB /* Build configuration list for PBXNativeTarget "ClockBlockTests" */;
 			buildPhases = (
 				68B860D62554185400110FEB /* Sources */,
 				68B860D72554185400110FEB /* Frameworks */,
@@ -169,14 +187,14 @@
 			dependencies = (
 				68B860DC2554185400110FEB /* PBXTargetDependency */,
 			);
-			name = BaseCoreDataTests;
+			name = ClockBlockTests;
 			productName = BaseCoreDataTests;
-			productReference = 68B860DA2554185400110FEB /* BaseCoreDataTests.xctest */;
+			productReference = 68B860DA2554185400110FEB /* ClockBlockTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		68B860E42554185400110FEB /* BaseCoreDataUITests */ = {
+		68B860E42554185400110FEB /* ClockBlockUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 68B860F42554185400110FEB /* Build configuration list for PBXNativeTarget "BaseCoreDataUITests" */;
+			buildConfigurationList = 68B860F42554185400110FEB /* Build configuration list for PBXNativeTarget "ClockBlockUITests" */;
 			buildPhases = (
 				68B860E12554185400110FEB /* Sources */,
 				68B860E22554185400110FEB /* Frameworks */,
@@ -187,9 +205,9 @@
 			dependencies = (
 				68B860E72554185400110FEB /* PBXTargetDependency */,
 			);
-			name = BaseCoreDataUITests;
+			name = ClockBlockUITests;
 			productName = BaseCoreDataUITests;
-			productReference = 68B860E52554185400110FEB /* BaseCoreDataUITests.xctest */;
+			productReference = 68B860E52554185400110FEB /* ClockBlockUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -214,7 +232,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 68B860BF2554185300110FEB /* Build configuration list for PBXProject "BaseCoreData" */;
+			buildConfigurationList = 68B860BF2554185300110FEB /* Build configuration list for PBXProject "ClockBlock" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -227,9 +245,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				68B860C32554185300110FEB /* BaseCoreData */,
-				68B860D92554185400110FEB /* BaseCoreDataTests */,
-				68B860E42554185400110FEB /* BaseCoreDataUITests */,
+				68B860C32554185300110FEB /* ClockBlock */,
+				68B860D92554185400110FEB /* ClockBlockTests */,
+				68B860E42554185400110FEB /* ClockBlockUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -265,10 +283,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68B861F7255A9C1300110FEB /* SavedTasksSheet.swift in Sources */,
 				68B860D12554185400110FEB /* Persistence.swift in Sources */,
+				68B8613F25574F6600110FEB /* DateSelectionSheet.swift in Sources */,
+				6898DF13255CA19600000F3C /* GlobalColor.swift in Sources */,
+				68B8613A2556A63200110FEB /* ItemView.swift in Sources */,
 				68B860CA2554185300110FEB /* ContentView.swift in Sources */,
 				68B860C82554185300110FEB /* BaseCoreDataApp.swift in Sources */,
 				68B860D42554185400110FEB /* BaseCoreData.xcdatamodeld in Sources */,
+				68B861B8255941A500110FEB /* DateStorage.swift in Sources */,
+				68B86201255A9F7800110FEB /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,12 +317,12 @@
 /* Begin PBXTargetDependency section */
 		68B860DC2554185400110FEB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 68B860C32554185300110FEB /* BaseCoreData */;
+			target = 68B860C32554185300110FEB /* ClockBlock */;
 			targetProxy = 68B860DB2554185400110FEB /* PBXContainerItemProxy */;
 		};
 		68B860E72554185400110FEB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 68B860C32554185300110FEB /* BaseCoreData */;
+			target = 68B860C32554185300110FEB /* ClockBlock */;
 			targetProxy = 68B860E62554185400110FEB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -426,7 +450,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"BaseCoreData/Preview Content\"";
+				DEVELOPMENT_TEAM = 47ZY8XD7YD;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = BaseCoreData/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -434,10 +460,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.brentonbeltrami.BaseCoreData;
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.brentonbeltrami.ClockBlock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -447,7 +474,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"BaseCoreData/Preview Content\"";
+				DEVELOPMENT_TEAM = 47ZY8XD7YD;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = BaseCoreData/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -455,10 +484,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.brentonbeltrami.BaseCoreData;
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.brentonbeltrami.ClockBlock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -479,7 +509,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BaseCoreData.app/BaseCoreData";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ClockBlock.app/ClockBlock";
 			};
 			name = Debug;
 		};
@@ -500,7 +530,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BaseCoreData.app/BaseCoreData";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ClockBlock.app/ClockBlock";
 			};
 			name = Release;
 		};
@@ -545,7 +575,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		68B860BF2554185300110FEB /* Build configuration list for PBXProject "BaseCoreData" */ = {
+		68B860BF2554185300110FEB /* Build configuration list for PBXProject "ClockBlock" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				68B860EC2554185400110FEB /* Debug */,
@@ -554,7 +584,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		68B860EE2554185400110FEB /* Build configuration list for PBXNativeTarget "BaseCoreData" */ = {
+		68B860EE2554185400110FEB /* Build configuration list for PBXNativeTarget "ClockBlock" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				68B860EF2554185400110FEB /* Debug */,
@@ -563,7 +593,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		68B860F12554185400110FEB /* Build configuration list for PBXNativeTarget "BaseCoreDataTests" */ = {
+		68B860F12554185400110FEB /* Build configuration list for PBXNativeTarget "ClockBlockTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				68B860F22554185400110FEB /* Debug */,
@@ -572,7 +602,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		68B860F42554185400110FEB /* Build configuration list for PBXNativeTarget "BaseCoreDataUITests" */ = {
+		68B860F42554185400110FEB /* Build configuration list for PBXNativeTarget "ClockBlockUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				68B860F52554185400110FEB /* Debug */,
