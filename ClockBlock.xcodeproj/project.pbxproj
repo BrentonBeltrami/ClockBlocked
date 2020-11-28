@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6898DF13255CA19600000F3C /* GlobalColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6898DF12255CA19600000F3C /* GlobalColor.swift */; };
-		68B860C82554185300110FEB /* BaseCoreDataApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B860C72554185300110FEB /* BaseCoreDataApp.swift */; };
+		68B860C82554185300110FEB /* TimeBlocked.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B860C72554185300110FEB /* TimeBlocked.swift */; };
 		68B860CA2554185300110FEB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B860C92554185300110FEB /* ContentView.swift */; };
 		68B860CC2554185400110FEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68B860CB2554185400110FEB /* Assets.xcassets */; };
 		68B860CF2554185400110FEB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68B860CE2554185400110FEB /* Preview Assets.xcassets */; };
@@ -43,7 +43,7 @@
 /* Begin PBXFileReference section */
 		6898DF12255CA19600000F3C /* GlobalColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalColor.swift; sourceTree = "<group>"; };
 		68B860C42554185300110FEB /* ClockBlock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClockBlock.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		68B860C72554185300110FEB /* BaseCoreDataApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoreDataApp.swift; sourceTree = "<group>"; };
+		68B860C72554185300110FEB /* TimeBlocked.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeBlocked.swift; sourceTree = "<group>"; };
 		68B860C92554185300110FEB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		68B860CB2554185400110FEB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		68B860CE2554185400110FEB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -91,9 +91,9 @@
 		68B860BB2554185300110FEB = {
 			isa = PBXGroup;
 			children = (
-				68B860C62554185300110FEB /* BaseCoreData */,
-				68B860DD2554185400110FEB /* BaseCoreDataTests */,
-				68B860E82554185400110FEB /* BaseCoreDataUITests */,
+				68B860C62554185300110FEB /* TimeBlocked */,
+				68B860DD2554185400110FEB /* TimeBlockedTests */,
+				68B860E82554185400110FEB /* TimeBlockedUITests */,
 				68B860C52554185300110FEB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -108,10 +108,10 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		68B860C62554185300110FEB /* BaseCoreData */ = {
+		68B860C62554185300110FEB /* TimeBlocked */ = {
 			isa = PBXGroup;
 			children = (
-				68B860C72554185300110FEB /* BaseCoreDataApp.swift */,
+				68B860C72554185300110FEB /* TimeBlocked.swift */,
 				68B860C92554185300110FEB /* ContentView.swift */,
 				68B86200255A9F7800110FEB /* SettingsView.swift */,
 				68B861F6255A9C1300110FEB /* SavedTasksSheet.swift */,
@@ -125,7 +125,7 @@
 				68B860D22554185400110FEB /* BaseCoreData.xcdatamodeld */,
 				68B860CD2554185400110FEB /* Preview Content */,
 			);
-			path = BaseCoreData;
+			path = TimeBlocked;
 			sourceTree = "<group>";
 		};
 		68B860CD2554185400110FEB /* Preview Content */ = {
@@ -136,22 +136,22 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		68B860DD2554185400110FEB /* BaseCoreDataTests */ = {
+		68B860DD2554185400110FEB /* TimeBlockedTests */ = {
 			isa = PBXGroup;
 			children = (
 				68B860DE2554185400110FEB /* BaseCoreDataTests.swift */,
 				68B860E02554185400110FEB /* Info.plist */,
 			);
-			path = BaseCoreDataTests;
+			path = TimeBlockedTests;
 			sourceTree = "<group>";
 		};
-		68B860E82554185400110FEB /* BaseCoreDataUITests */ = {
+		68B860E82554185400110FEB /* TimeBlockedUITests */ = {
 			isa = PBXGroup;
 			children = (
 				68B860E92554185400110FEB /* BaseCoreDataUITests.swift */,
 				68B860EB2554185400110FEB /* Info.plist */,
 			);
-			path = BaseCoreDataUITests;
+			path = TimeBlockedUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,7 +289,7 @@
 				6898DF13255CA19600000F3C /* GlobalColor.swift in Sources */,
 				68B8613A2556A63200110FEB /* ItemView.swift in Sources */,
 				68B860CA2554185300110FEB /* ContentView.swift in Sources */,
-				68B860C82554185300110FEB /* BaseCoreDataApp.swift in Sources */,
+				68B860C82554185300110FEB /* TimeBlocked.swift in Sources */,
 				68B860D42554185400110FEB /* BaseCoreData.xcdatamodeld in Sources */,
 				68B861B8255941A500110FEB /* DateStorage.swift in Sources */,
 				68B86201255A9F7800110FEB /* SettingsView.swift in Sources */,
@@ -451,10 +451,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_ASSET_PATHS = "\"BaseCoreData/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"TimeBlocked/Preview Content\"";
 				DEVELOPMENT_TEAM = 47ZY8XD7YD;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = BaseCoreData/Info.plist;
+				INFOPLIST_FILE = TimeBlocked/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -475,10 +475,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_ASSET_PATHS = "\"BaseCoreData/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"TimeBlocked/Preview Content\"";
 				DEVELOPMENT_TEAM = 47ZY8XD7YD;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = BaseCoreData/Info.plist;
+				INFOPLIST_FILE = TimeBlocked/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
