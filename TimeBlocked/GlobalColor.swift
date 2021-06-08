@@ -14,6 +14,7 @@ var colorCodes = defaults.object(forKey: "ColorCodes") as? [String] ?? ["#333a45
 
 //Current Theme being shown
 var coloring = colors(background: Color(hex: colorCodes[0]), accent: Color(hex: colorCodes[1]),secondary: Color(hex: colorCodes[2]),text: Color(hex: colorCodes[3]),canceled: Color(hex: colorCodes[4]))
+var darkMode = defaults.optionalBool(forKey: "darkMode") ?? true
 
 //function to update navbar colors
 func updateNavBarColor() {

@@ -8,6 +8,7 @@ import SwiftUI
 
 //MARK: Struct for tasks to be saved
 struct TaskStore: Identifiable, Codable {
+
     let id = UUID()
     var item : String
 }
@@ -140,6 +141,7 @@ struct SavedTasksSheet: View {
             
             
         }
+        .preferredColorScheme(darkMode ? .dark : .light)
         
         
     }

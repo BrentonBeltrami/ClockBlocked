@@ -22,10 +22,27 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     //MARK: CoreData objects
+//    var _predicate: Date
+//    var itemRequest: FetchRequest<Item>
+//    var items: FetchedResults<Item>{itemRequest.wrappedValue}
+    
+//    let predicate = NSPredicate(format: "timestamp >= $selectedDate")
+//    // variables in predicates begin with $
+//    // in this, "$text" is a variable NSExpression called "text"
+//    let matchesObject = predicate.evaluate(with: Item, substitutionVariables: ["text": selectedDate])
+//
+    
+    
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
         animation: .default)
     private var items: FetchedResults<Item>
+    
+
+    
+    //MARK: StoreManager
+    @ObservedObject var storeManager: StoreManager
+    
     
     
     //MARK: Date variables
@@ -47,6 +64,9 @@ struct ContentView: View {
     //setting time indicator to left or right of block text
     @State var isTimeLeft = defaults.bool(forKey: "isTimeLeft")
     
+    //showing saved task sheet in contextmenu
+    @State var showSavedSheet = defaults.bool(forKey: "ShowSavedSheet")
+    
     
     //showing clear all blocks alert
     @State var clearAllAlert = false
@@ -57,6 +77,11 @@ struct ContentView: View {
     //title of the block ending the swap
     @State var swapTitle: String?
     
+    @State var isSwapMode = false
+    
+    
+    //timer to update state when hour changes
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     
     //Swipe cordinates
@@ -88,18 +113,55 @@ struct ContentView: View {
     
     
     @State var navButtonSize = UserDefaults.standard.optionalInt(forKey: "NavButtonSize") ?? 2
-    @State var checkButtonSize = UserDefaults.standard.optionalInt(forKey: "CheckButtonSize") ?? 1
+    @State var checkButtonSize = UserDefaults.standard.optionalInt(forKey: "CheckButtonSize") ?? 2
     
     
     @State var swipeSensitivity = UserDefaults.standard.optionalInt(forKey: "SwipeSensitivity") ?? 100
     @State var hasSwiped = false
     
     //function for overriding default color permissions
-    init() {
+    init(storeManager: StoreManager) {
         updateNavBarColor()
         
         UITableView.appearance().backgroundColor = .clear // tableview background
         UITableViewCell.appearance().backgroundColor = .clear // cell background
+        
+        self.storeManager = storeManager
+        
+//        self.selectedDate = Date()
+//
+//        let predicate = NSPredicate(format: "timestamp >= $selectedDate")
+//        // variables in predicates begin with $
+//        // in this, "$text" is a variable NSExpression called "text"
+//        let matchesObject = predicate.evaluate(with: Item.self, substitutionVariables: ["text": selectedDate])
+//
+//        self.itemRequest = FetchRequest(
+//           sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
+//           predicate: predicate,
+//
+//           animation: .default
+//       )
+        
+        
+//        let dateComponent = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: Date())
+//        var components = DateComponents()
+//        components.year = dateComponent.year
+//        components.month = dateComponent.month
+//        components.day = dateComponent.day
+//        components.hour = 0
+//        components.minute = 00
+//        components.second = 00
+//        self._predicate = Calendar.current.date(from: components) ?? Date()
+//
+//
+//        self.itemRequest = FetchRequest(
+//            sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
+//            predicate:NSPredicate(format: "timestamp >= %@", _predicate as NSDate),
+//
+//            animation: .default
+//        )
+        
+
     }
     
     
@@ -154,31 +216,41 @@ struct ContentView: View {
                             
                                 //completion button
                                 Button(action: {
-                                    if item.skipped { item.skipped.toggle() }
-                                    item.completed.toggle()
-                                    saveContext()
+                                    if isSwapMode {
+                                        swapWithBlock(item: item)
+                                    } else {
+                                        if item.skipped { item.skipped.toggle() }
+                                        item.completed.toggle()
+                                        saveContext()
+                                    }
+                                    
                                     impactMed.impactOccurred()
                                 }, label: {
-                                    Image(systemName: item.skipped ? "xmark.circle.fill" : "checkmark.circle.fill")
-                                        .buttonModifier(size: checkButtonSize)
-                                        .foregroundColor(coloring.accent)
+                                    
+                                    if isSwapMode {
+                                        Image(systemName: "arrow.up.arrow.down.circle.fill")
+                                            .buttonModifier(size: checkButtonSize)
+                                            .foregroundColor(coloring.accent)
+                                    } else {
+                                        Image(systemName: item.skipped ? "xmark.circle.fill" : "checkmark.circle.fill")
+                                            .buttonModifier(size: checkButtonSize)
+                                            .foregroundColor(coloring.accent)
+                                            .onTapGesture(count: 2) {
+                                                item.skipped.toggle()
+                                                impactMed.impactOccurred()
+                                                saveContext()
+                                            }
+                                    }
+                                    
                                         
-                                }).buttonStyle(BorderlessButtonStyle())
+                                })
+                                .buttonStyle(BorderlessButtonStyle())
                             
                             
                             
                             
                         }//end of HStack
                             .contextMenu(ContextMenu(menuItems: {
-                                Button(action: {
-                                    item.skipped.toggle()
-                                    impactMed.impactOccurred()
-                                    saveContext()
-                                },label:{
-                                    Text(item.skipped ? "Unskip" : "Skipped")
-                                })
-                                
-                                
                                 //clipboard options in contextMenu
                                 Section(header: Text("Clipboard Options")
                                             .foregroundColor(coloring.accent)
@@ -211,18 +283,11 @@ struct ContentView: View {
                                         Button(action: {
                                             if swapStoreOne == nil {
                                                 swapStoreOne = item
+                                                isSwapMode = true
                                             } else {
-                                                swapTitle = item.title
                                                 
-                                                item.title = swapStoreOne!.title
+                                                swapWithBlock(item: item)
                                                 
-                                                for curItem in items {
-                                                    if curItem == swapStoreOne {
-                                                        curItem.title = swapTitle
-                                                    }
-                                                }
-                                                swapStoreOne = nil
-                                                saveContext()
                                             }
                                         }, label: {
                                             Text(swapStoreOne == nil ? "Start Swap" : "Swap With \(formatTime(date: swapStoreOne!.timestamp!))")
@@ -232,11 +297,13 @@ struct ContentView: View {
                                     }
                                 }
                                 
-                                Button("Saved Tasks", action: {
-                                    impactMed.impactOccurred()
-                                    activeSheet = .savedTasks
-                                    cellItem = item
-                                })
+                                if showSavedSheet {
+                                    Button("Saved Tasks", action: {
+                                        impactMed.impactOccurred()
+                                        activeSheet = .savedTasks
+                                        cellItem = item
+                                    })
+                                }
                             }))
                             .alert(isPresented: $clearAllAlert) {
                                 Alert(title: Text("Clear All Blocks For \(navDateFormatter.string(from: selectedDate))?"), message: Text("This is permanent!"), primaryButton: .destructive(Text("Clear All")) {
@@ -286,7 +353,7 @@ struct ContentView: View {
             .sheet(item: $activeSheet) { item in
                 switch item {
                 case .settings:
-                    SettingsView(selectedStart: $startTime, selectedEnd: $endTime, isTimeLeft: $isTimeLeft, navButtonSize: $navButtonSize, checkButtonSize: $checkButtonSize, swipeSensitivity: $swipeSensitivity)
+                    SettingsView(storeManager: storeManager, selectedStart: $startTime, selectedEnd: $endTime, isTimeLeft: $isTimeLeft, navButtonSize: $navButtonSize, checkButtonSize: $checkButtonSize, swipeSensitivity: $swipeSensitivity, showSavedSheet: $showSavedSheet)
                 case .date:
                     DateSelectionSheet(date: $selectedDate)
                 case .savedTasks:
@@ -297,9 +364,20 @@ struct ContentView: View {
                 createDayData(dateCheck: selectedDate)
             })
             .onAppear() {
-                //MARK: - TODO Create first run user defaults for showing intro & for for setting the default value for endTime
-                
+                //MARK: - TODO Create first run user defaults for showing intro
+                UIScrollView.appearance().keyboardDismissMode = .interactive
                 createDayData(dateCheck: selectedDate)
+                
+
+//MARK: an attempt at filtering the list of items
+//                testItems = items.filter {
+//                    return isToday(item: $0)
+//                }
+                
+                
+                
+                
+
             }
             .gesture(
                 DragGesture()
@@ -340,8 +418,30 @@ struct ContentView: View {
         }
         //force updates navBar state on theme change
         .id(coloring)
+        .preferredColorScheme(darkMode ? .dark : .light)
+        .onReceive(timer) { _ in
+            let curHour = Calendar.current.dateComponents([.hour, .minute], from: Date())
+            
+            //force sate update if new hour
+            if curHour.minute! == 00 {
+                let forceState = endTime
+                endTime = 12
+                endTime = forceState
+            }
+        }
         
     }
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
     
     
     //MARK: - Functions for making changes to the dataModel
@@ -528,7 +628,9 @@ struct ContentView: View {
     }
     
     
-//functions for modifying text style
+    
+    
+//MARK: functions for modifying text style
     func boldCurrentHour(itemTime: Date) -> Font.Weight {
         let date = Date()
         
@@ -608,6 +710,23 @@ struct ContentView: View {
         }
     }
     
+    //MARK: - Swapping Function
+        func swapWithBlock(item: Item) {
+            swapTitle = item.title
+            
+            item.title = swapStoreOne!.title
+            
+            for curItem in items {
+                if curItem == swapStoreOne {
+                    curItem.title = swapTitle
+                }
+            }
+            swapStoreOne = nil
+                
+            isSwapMode = false
+            saveContext()
+        }
+    
     
     
     
@@ -630,7 +749,8 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        ContentView(storeManager: StoreManager())
+            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
 
@@ -689,3 +809,18 @@ extension UserDefaults {
 
 
 
+//
+//extension View {
+//    func resignKeyboardOnDragGesture() -> some View {
+//        return modifier(ResignKeyboardOnDragGesture())
+//    }
+//}
+//
+//struct ResignKeyboardOnDragGesture: ViewModifier {
+//    var gesture = DragGesture().onChanged { _ in
+//        UIApplication.shared.endEditing(true)
+//    }
+//    func body(content: Content) -> some View {
+//        content.gesture(gesture)
+//    }
+//}

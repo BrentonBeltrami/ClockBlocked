@@ -50,5 +50,6 @@ struct DateSelectionSheet: View {
             .background(coloring.background)
             .edgesIgnoringSafeArea(.all)
         }
+        .preferredColorScheme(darkMode ? .dark : .light)
     }
 }
